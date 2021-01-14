@@ -1,0 +1,55 @@
+<app-user-navbar></app-user-navbar>
+.
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle btn btn-primary btn-xs" data-toggle="dropdown">Locations</a>
+                <div class="dropdown-menu">
+                    <a [routerLink]="['/uservenue']" class="dropdown-item">Mumbai</a>
+                    <a href="#" class="dropdown-item">Pune</a>
+                    <a href="#" class="dropdown-item">Nashik</a>
+                    <a href="#" class="dropdown-item">Sangli</a>
+                    <a href="#" class="dropdown-item">Nagpur</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-4 mt-5" *ngFor="let pandit of pandits">
+                    <div>
+                        Pandit Name : {{pandit.panditName}}
+                    </div>
+
+                    <div>
+                        Pandit Address : {{pandit.panditAddress}}
+                    </div>
+                    <div>
+                        Pandit zipcode : {{pandit.zipcode}}
+                    </div>
+                    <div>
+                        Pandit Office Number : {{pandit.officeNumber}}
+                    </div>
+                    <div>
+                        Pandit Email : {{pandit.emailId}}
+                    </div>
+                    <div>
+                        Pandit Starting Price : {{pandit.startingPrice}}
+                    </div>
+                    <div>
+                        Pandit profilePhoto : {{pandit.profilePhoto}}
+                    </div>
+                    <div>
+                        Pandit Experience :{{pandit.experience}}
+                    </div>
+                    <div>
+                        Pandit Languages:{{pandit.languages}}
+                    </div>
+                    <div class="btn btn-primary">
+                        Add to Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
