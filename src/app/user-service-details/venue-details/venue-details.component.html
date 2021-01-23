@@ -1,0 +1,42 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                    <div>
+                        <h4><b>Venue Name :</b> {{venue.venueName}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Type :</b> {{venue.venueType}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Rent per day :</b> {{venue.perDayRent}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Seating Capacity :</b> {{venue.seatingCapacity}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Kitchen :</b> {{venue.kitchenAvailability}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Photos :</b> {{venue.samplePhotos}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Address :</b> {{venue.venueAddress}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Contact Email :</b> {{venue.emailId}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Venue Contact Number :</b> {{venue.officeNumber}}</h4>
+                    </div>
+                    <div class="btn btn-secondary" (click)="addtocart(venue)">
+                        Add To Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

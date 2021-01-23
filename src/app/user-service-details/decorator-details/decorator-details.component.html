@@ -1,0 +1,35 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-6  mt-5">
+            <div>
+                <h4><b>Decorator Name :</b> {{decorator.decoratorName}}</h4>
+            </div>
+            <div>
+                <h4><b>Address :</b> {{decorator.decoratorAddress}}</h4>
+            </div>
+            <div>
+                <h4><b>ZipCode :</b> {{decorator.decoratorZipCode}}</h4>
+            </div>
+            <div>
+                <h4><b>City :</b> {{decorator.decoratorCity}}</h4>
+            </div>
+            <div>
+                <h4><b>Starting Price :</b> {{decorator.decoratorStartingPrice}}</h4>
+            </div>
+            <div>
+                <h4><b>Contact Number :</b> {{decorator.decoratorOfficeNo}}</h4>
+            </div>
+            <div>
+                <h4><b>Email :</b> {{decorator.decoratorEmail}}</h4>
+            </div>
+
+            <div class="btn btn-secondary" (click)="addtocart(decorator)">
+                Add To Cart
+            </div>
+
+        </div>
+
+    </div>
+</div>

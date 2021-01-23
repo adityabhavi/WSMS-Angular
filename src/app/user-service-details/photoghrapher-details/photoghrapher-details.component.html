@@ -1,0 +1,34 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                    <div>
+                        <h4><b>Photographer Name :</b> {{photo.photographerName}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Address :</b> {{photo.photographerAddress}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> zipcode :</b> {{photo.zipcode}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Contact Number :</b> {{photo.officeNumber}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Email :</b> {{photo.emailId}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Price per Day :</b> {{photo.perDayPrice}}</h4>
+                    </div>
+
+                    <div class="btn btn-secondary" (click)="addtocart(photo)">
+                        Add to Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -11,14 +11,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
-
-
-
-
-
-
-
-
 </head>
 
 <body>
@@ -27,62 +19,49 @@
 
         <div class="site-mobile-menu">
             <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
+                <div class="site-mobile-menu-close mt-1">
                     <span class="icon-close2 js-menu-toggle"></span>
                 </div>
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
 
-        <header class="site-navbar py-3" role="banner">
-
-            <div class="container">
-                <div class="row align-items-center">
-
-                    <div class="col-12 col-xl-2">
-
-                        <h1 class="mb-0"><a href="index.html" class="text-white h1 mb-0 ">WedsMeGood</a></h1>
+        <div class="row ">
+            <div class="col-12">
+                <nav class="navbar navbar-expand-md navbar-dark justify-content-between bg-dark">
+                    <div>
+                        <h3 style="color: cornsilk; text-shadow: 1px 1px 2px black;margin-top: 10px; ">WedMeGood</h3>
                     </div>
-                    <div class="col-12 col-md-10 d-none d-xl-block">
-                        <nav class="site-navigation position-relative text-right" role="navigation">
 
-                            <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block ">
-                                <li class="active"><a href="index.html">Home</a></li>
+                    <div>
+                        <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                                <li class="has-children ">
-                                    <a href="services.html">Services</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">Venues</a></li>
-                                        <li><a href="#">Photographers</a></li>
-                                        <li><a href="#">Decorator</a></li>
-                                        <li><a href="#">Catering</a></li>
-                                        <li><a href="#">Pandits</a></li>
-                                        <li><a href="#">DJ</a></li>
-                                    </ul>
+                        <div class="collapse navbar-collapse ml-auto mr-1 flex-grow-0" id="navbarTogglerDemo01" [ngClass]="{ 'show': navbarOpen }">
+                            <ul class="navbar-nav text-right">
+                                <li class="nav-item active">
+                                    <a class="nav-link mr-3" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Home</a>
                                 </li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li class="nav-item active">
+                                    <a class="nav-link mr-3" routerLink="/contactus" style="font-size:3vh;color:white;text-shadow: 1px 1px 2px black;">About Us</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link mr-3" routerLink="/signin" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Contact Us</a>
+                                </li>
                             </ul>
-                        </nav>
+                        </div>
                     </div>
-
-
-                    <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
-
-                </div>
-
+                </nav>
             </div>
-
-
-        </header>
+        </div>
 
 
 
 
         <img class="object-fit-cover h-100 w-100" src="https://image.wedmegood.com/resized/1900X/uploads/city_bg_image/1/delhi_bg.jpeg" alt="HeaderImg">
 
-        <div class="container">
+        <div class="container" style="margin-top: -30vh;">
             <div class="row align-items-center no-gutters align-items-stretch overlap-section">
                 <div class="col-md-6">
                     <div class="feature-1 pricing h-100 text-center">
@@ -92,7 +71,7 @@
                         </div>
                         <h2 class="my-4 heading">Register with us</h2>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-dark text-white py-3 px-4 btn-block mt-5" value="Click here to Register">
+                            <input type="submit" [routerLink]="['/register']" class="btn btn-dark text-white py-3 px-4 btn-block mt-5" value="Click here to Register">
                         </div>
                     </div>
                 </div>
@@ -104,15 +83,20 @@
                         <form method="post">
                             <div class="form-group">
 
-                                <label for="fq_name">User Name</label>
-                                <input type="text" class="form-control btn-block" id="fq_name" name="fq_name" placeholder="Enter UserName">
+                                <label for="fq_name">User Email Id</label>
+                                <input type="text" class="form-control btn-block" id="fq_name" [(ngModel)]="usern" name="fq_name" placeholder="Enter User EmailId">
                             </div>
                             <div class="form-group mb-4">
                                 <label for="fq_email">Password</label>
-                                <input type="text" class="form-control btn-block" id="fq_email" name="fq_email" placeholder="Enter Password">
+                                <input type="Password" class="form-control btn-block" id="fq_email" [(ngModel)]="pass" name="fq_email" placeholder="Enter Password">
                             </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" (change)="checkCheckBoxvalue($event)" id="inlineCheckbox1" value="option1">
+                                <label class="form-check-label " for="inlineCheckbox1">Are you vendor?</label>
+                            </div>
+
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary text-white py-2 px-4 btn-block" value="Login">
+                                <input type="submit" class="btn btn-primary text-white py-2 px-4 btn-block" (click)="login(usern,pass,isCheck)" value="Login">
                             </div>
                         </form>
                     </div>
@@ -166,135 +150,6 @@
         </div>
 
 
-        <div class="site-section block-13">
-            <!-- <div class="container"></div> -->
-
-
-            <div class="owl-carousel nonloop-block-13">
-                <div>
-                    <a href="#" class="unit-1 text-center">
-                        <img src="./assets/images/img_1.jpg" alt="Image" class="img-fluid">
-                        <div class="unit-1-text">
-                            <h3 class="unit-1-heading">Storage</h3>
-                            <p class="px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore ullam minus voluptate libero.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="#" class="unit-1 text-center">
-                        <img src="./assets/images/img_2.jpg" alt="Image" class="img-fluid">
-                        <div class="unit-1-text">
-                            <h3 class="unit-1-heading">Air Transports</h3>
-                            <p class="px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore ullam minus voluptate libero.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="#" class="unit-1 text-center">
-                        <img src="./assets/images/img_3.jpg" alt="Image" class="img-fluid">
-                        <div class="unit-1-text">
-                            <h3 class="unit-1-heading">Cargo Transports</h3>
-                            <p class="px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore ullam minus voluptate libero.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="#" class="unit-1 text-center">
-                        <img src="./assets/images/img_4.jpg" alt="Image" class="img-fluid">
-                        <div class="unit-1-text">
-                            <h3 class="unit-1-heading">Cargo Ship</h3>
-                            <p class="px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore ullam minus voluptate libero.</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div>
-                    <a href="#" class="unit-1 text-center">
-                        <img src="./assets/images/img_5.jpg" alt="Image" class="img-fluid">
-                        <div class="unit-1-text">
-                            <h3 class="unit-1-heading">Ware Housing</h3>
-                            <p class="px-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos tempore ullam minus voluptate libero.</p>
-                        </div>
-                    </a>
-                </div>
-
-
-            </div>
-        </div>
-
-
-
-
-
-
-
-        <div class="site-section border-bottom">
-            <div class="container">
-
-                <div class="row justify-content-center mb-5">
-                    <div class="col-md-7 text-center border-primary">
-                        <h2 class="font-weight-light text-primary">Testimonials</h2>
-                    </div>
-                </div>
-
-                <div class="slide-one-item home-slider owl-carousel">
-                    <div>
-                        <div class="testimonial">
-                            <figure class="mb-4">
-                                <img src="./assets/images/person_3.jpg" alt="Image" class="img-fluid mb-3">
-                                <p>John Smith</p>
-                            </figure>
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi
-                                    earum unde iusto.&rdquo;</p>
-                            </blockquote>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="testimonial">
-                            <figure class="mb-4">
-                                <img src="./assets/images/person_2.jpg" alt="Image" class="img-fluid mb-3">
-                                <p>Christine Aguilar</p>
-                            </figure>
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi
-                                    earum unde iusto.&rdquo;</p>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="testimonial">
-                            <figure class="mb-4">
-                                <img src="./assets/images/person_4.jpg" alt="Image" class="img-fluid mb-3">
-                                <p>Robert Spears</p>
-                            </figure>
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi
-                                    earum unde iusto.&rdquo;</p>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="testimonial">
-                            <figure class="mb-4">
-                                <img src="./assets/images/person_5.jpg" alt="Image" class="img-fluid mb-3">
-                                <p>Bruce Rogers</p>
-                            </figure>
-                            <blockquote>
-                                <p>&ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur unde reprehenderit aperiam quaerat fugiat repudiandae explicabo animi minima fuga beatae illum eligendi incidunt consequatur. Amet dolores excepturi
-                                    earum unde iusto.&rdquo;</p>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
 
 
 
@@ -302,7 +157,7 @@
             <div class="container">
 
                 <div class="row pt-5 mt-5 text-center">
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="border-top pt-5">
                             <p>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -313,6 +168,9 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             </p>
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <a [routerLink]="['/adminlogin']">Admin Login</a>
                     </div>
 
                 </div>

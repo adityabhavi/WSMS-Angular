@@ -1,0 +1,68 @@
+<app-vendor-navbar></app-vendor-navbar>
+<div class="container">
+    <div class="row">
+
+        <div class="col-3">
+            <div class="container row">
+                <div class="col-md-12">
+                    <h1>Upload Image</h1>
+                </div>
+            </div>
+
+            <div class="container row">
+                <div class="col-md-6">
+                    <input type="file" (change)="onFileChanged($event)" multiple="multiple">
+
+                </div>
+                <div class="col-md-6">
+                    <input type="button" (click)="onUpload()" value="upload">
+                </div>
+            </div>
+            <hr />
+
+
+            <div class="container row">
+
+                <div class="col-md-6">
+                    <input type="button" value="Get Image">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4" *ngFor="let image of url">
+                    <img [src]="image">
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="table-responsive">
+                <table class="table table-stripped table-bordered">
+                    <tr class="thead-dark">
+                        <th>Decorator Name</th>
+                        <th>PerDayRent</th>
+                        <th>Location</th>
+                        <th>Mobile No</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                    <tr>
+                        <td>Vipul</td>
+                        <td>30000</td>
+                        <td>Pune</td>
+                        <td>647578963</td>
+
+
+                        <td>
+                            <a class="btn btn-sm btn-info mr-2">Edit</a>
+                            <a class="btn btn-sm btn-danger">Delete</a>
+                        </td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

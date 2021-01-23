@@ -1,0 +1,35 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                    <div>
+                        <h4><b>Musician Name :</b> {{dj.musicianName}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Address :</b> {{dj.musicianAddress}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> zipcode :</b> {{dj.musicianZipCode}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Contact Number :</b> {{dj.musicianOfficeNo}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Email :</b> {{dj.musicianEmail}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Per Hour Prince :</b> {{dj.perHourPrice}}</h4>
+                    </div>
+                    <div class="btn btn-secondary" (click)="addtocart(dj)">
+                        Add to Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

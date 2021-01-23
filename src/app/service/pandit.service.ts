@@ -5,16 +5,18 @@ import { HttpClient } from '@angular/common/http';
 
 export class Pandit {
   constructor(
-    public panditName:string,
-    public panditAddress: string,
-    public zipcode:Number,
-    public officeNumber: string,
-    public emailId:string,
-    public startingPrice:Number,
-    public profilePhoto:string,
-    public experience:Number,
-    public languages: string,
-    public vendorId:Number,
+    public panditId?:Number,
+    public panditName?:string,
+    public panditAddress?: string,
+    public zipcode?:Number,
+    public officeNumber?: string,
+    public emailId?:string,
+    public startingPrice?:Number,
+    
+    public experience?:Number,
+    public languages?: string,
+    public vendorId?:Number,
+    public panditCity?:string,
     
   ) { }
 }
@@ -25,6 +27,7 @@ export class Pandit {
 })
 export class PanditService {
 
+  panditObj:Pandit;
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -35,6 +38,10 @@ export class PanditService {
   }
 
   getAllPandit(){
-    return this.httpClient.get<Pandit[]>("http://localhost:8080/getallpandit");
+    return this.httpClient.get<Pandit[]>("http://localhost:8080/getAllPandit");
+  }
+
+  getPanditByCity(city: string){
+    return this.httpClient.get<Pandit[]>("http://localhost:8080/pandit?city="+city);
   }
 }

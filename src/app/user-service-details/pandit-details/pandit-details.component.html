@@ -1,0 +1,41 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                    <div>
+                        <h4><b>Pandit Name :</b> {{pandit.panditName}}</h4>
+                    </div>
+
+                    <div>
+                        <h4><b>Pandit Address :</b> {{pandit.panditAddress}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Pandit zipcode :</b> {{pandit.zipcode}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Pandit Office Number :</b> {{pandit.officeNumber}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Pandit Email :</b> {{pandit.emailId}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Pandit Starting Price :</b> {{pandit.startingPrice}}</h4>
+                    </div>
+
+                    <div>
+                        <h4><b>Pandit Experience :</b>{{pandit.experience}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>Pandit Languages:</b>{{pandit.languages}}</h4>
+                    </div>
+                    <div class="btn btn-secondary" (click)="addtocart(pandit)">
+                        Add To Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

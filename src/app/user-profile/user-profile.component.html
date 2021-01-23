@@ -1,0 +1,58 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 border-dark ">
+            <div class="row">
+                <div class="col-md-5 mt-5">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle btn btn-dark" data-toggle="dropdown">Categories</a>
+                        <div class="dropdown-menu">
+                            <a [routerLink]="['/uservenue']" class="dropdown-item">Venue</a>
+                            <a [routerLink]="['/usercaterers']" class="dropdown-item">Caterers</a>
+                            <a [routerLink]="['/userphotography']" class="dropdown-item">Photography</a>
+                            <a [routerLink]="['/userpandit']" class="dropdown-item">Pandit</a>
+                            <a [routerLink]="['/userdj']" class="dropdown-item">DJ</a>
+                            <a [routerLink]="['/userdecorator']" class="dropdown-item">Decorator</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <div class="btn btn-dark" [routerLink]="['/userprofileupdate']">
+                        Update Profile
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-4 mt-5">
+                    <div>
+                        User Name : {{user.userFullName}}
+                    </div>
+                    <div>
+                        Email : {{user.userEmail}}
+                    </div>
+                    <div>
+                        Mobile Number : {{user.userMobileNo}}
+                    </div>
+                    <div>
+                        Gender : {{user.userGender}}
+                    </div>
+                    <div>
+                        Address : {{user.userAddress}}
+                    </div>
+                    <div>
+                        zipcode : {{user.userZipCode}}
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

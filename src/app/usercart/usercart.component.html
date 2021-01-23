@@ -1,0 +1,42 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid pt-3">
+    <div class="row">
+
+
+        <div class="col-md-12" style="margin-top: 70px;">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1>User Cart</h1>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="table-responsive p-5">
+                <table class="table table-stripped table-bordered text-center">
+                    <tr class="thead-dark" style="background-color:rgb(48, 48, 48); color: whitesmoke;">
+                        <th>Vendor Name</th>
+                        <th>Service Name</th>
+                        <th>Order Status</th>
+                    </tr>
+
+                    <tr *ngFor="let or of orderDetail">
+                        <td>{{or.vendorName}}</td>
+                        <td>{{or.serviceName}}</td>
+                        <td *ngIf="or.order.statusOfOrder">Waiting</td>
+                        <td *ngIf="!or.order.statusOfOrder">Accepted</td>
+
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

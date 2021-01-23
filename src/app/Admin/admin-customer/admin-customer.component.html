@@ -1,0 +1,45 @@
+<app-admin-navbar></app-admin-navbar>
+<div class="col-12 ">
+
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-12" style="margin-top: 70px;">
+                <h1>List of Customer</h1>
+            </div>
+
+        </div>
+        <hr />
+
+        <input class="form-control form-control-dark w-100 " type="text" placeholder="Search" aria-label="Search">
+
+
+    </div>
+
+    <br>
+
+    <div class="table-responsive p-5">
+        <table class="table table-stripped table-bordered p-5">
+            <tr class="thead-dark">
+                <th>Customer Name</th>
+                <th>Email</th>
+                <th>Phone No</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+
+            <tr *ngFor="let user of users">
+                <td>{{user.userFullName}}</td>
+                <td>{{user.userEmail}}</td>
+                <td>{{user.userMobileNo}}</td>
+                <td>{{user.userCity}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger text-black" (click)="deleteuser(user)">Delete</button>
+                </td>
+
+
+
+            </tr>
+
+        </table>
+    </div>
+</div>

@@ -4,14 +4,15 @@ import { HttpClient } from '@angular/common/http';
 
 export class Photography {
   constructor(
-    public photographerName:string,
-    public photographerAddress: string,
-    public zipcode:Number,
-    public officeNumber: string,
-    public emailId:string,
-    public perDayPrice:Number,
-    public samplePhoto: string,
-    public vendorId:Number,
+    public photographerId?:Number,
+    public photographerName?:string,
+    public photographerAddress?: string,
+    public zipcode?:Number,
+    public officeNumber?: string,
+    public emailId?:string,
+    public perDayPrice?:Number,
+    public photographerCity?:string,
+    public vendorId?:Number,
 
   ) { }
 }
@@ -24,6 +25,7 @@ export class Photography {
 
 export class PhotographyService {
 
+  photoObj:Photography;
   constructor(
     private httpClient: HttpClient
   ) { }
@@ -32,4 +34,15 @@ export class PhotographyService {
     alert(photography.photographerName);
     return this.httpClient.post<Photography>("http://localhost:8080/addphotographer", photography);
   }
+
+  getAllPhotographers(){
+    return this.httpClient.get<Photography[]>("http://localhost:8080/getAllPhotographer");
+  }
+
+  getPhotographerDetails(city: string){
+    return this.httpClient.get<Photography[]>("http://localhost:8080/photographer?city="+city);
+  }
+  
+
+
 }

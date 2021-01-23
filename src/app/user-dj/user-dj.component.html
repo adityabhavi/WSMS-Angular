@@ -1,0 +1,152 @@
+<!-- <app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-5 mt-5">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle btn btn-dark" data-toggle="dropdown">Categories</a>
+                            <div class="dropdown-menu">
+                                <a [routerLink]="['/uservenue']" class="dropdown-item">Venue</a>
+                                <a [routerLink]="['/usercaterers']" class="dropdown-item">Catering</a>
+                                <a [routerLink]="['/userphotography']" class="dropdown-item">Photography</a>
+                                <a [routerLink]="['/userpandit']" class="dropdown-item">Pandit</a>
+                                <a [routerLink]="['/userdj']" class="dropdown-item">DJ</a>
+                                <a [routerLink]="['/userdecorator']" class="dropdown-item">Decorator</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 mt-5">
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle btn btn-dark" data-toggle="dropdown">Locations</a>
+                            <div class="dropdown-menu">
+                                <a (click)="djlocation('mumbai')" class="dropdown-item">Mumbai</a>
+                                <a (click)="djlocation('pune')" class="dropdown-item">Pune</a>
+                                <a (click)="djlocation('nashik')" class="dropdown-item">Nashik</a>
+                                <a (click)="djlocation('sangli')" class="dropdown-item">Sangli</a>
+                                <a (click)="djlocation('nagpur')" class="dropdown-item">Nagpur</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <div class="col-4 mt-5" *ngFor="let dj of djs">
+                    <div>
+                        Musician Name : {{dj.musicianName}}
+                    </div>
+                    <div>
+                        Per Hour Prince : {{dj.perHourPrice}}
+                    </div>
+                    <div class="btn btn-primary" (click)="getmoredetails(dj)">
+                        Get More Details
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<app-user-navbar></app-user-navbar>
+<div class="container-fluid pt-3">
+    <div class="row">
+        <div class="col-3" style="margin-top: 12px;">
+            <div style="top: 100px;">
+
+
+
+
+                <br>
+
+
+                <div class="check" style="margin-left: 10px">
+
+                    <div class="d-flex justify-content-center" style="background-color:rgb(48, 48, 48); font-size: 26px; color: whitesmoke;">Services</div>
+                    <div class="list-group-item">
+                        <div class="form-check">
+                            <a [routerLink]="['/uservenue']" class="dropdown-item">Venue</a>
+                        </div>
+                        <div class="form-check">
+                            <a [routerLink]="['/usercaterers']" class="dropdown-item">Caterers</a>
+                        </div>
+                        <div class="form-check">
+                            <a [routerLink]="['/userphotography']" class="dropdown-item">Photography</a>
+                        </div>
+                        <div class="form-check">
+                            <a [routerLink]="['/userpandit']" class="dropdown-item">Pandit</a>
+                        </div>
+                        <div class="form-check">
+                            <a [routerLink]="['/userdj']" class="dropdown-item">DJ</a>
+                        </div>
+                        <div class="form-check">
+                            <a [routerLink]="['/userdecorator']" class="dropdown-item">Decorator</a>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle btn btn-dark" data-toggle="dropdown">Locations</a>
+
+                                <div class="dropdown-menu">
+                                    <a [routerLink]="['/uservenue']" class="dropdown-item">Venue</a>
+                                    <a [routerLink]="['/usercaterers']" class="dropdown-item">Caterers</a>
+                                    <a [routerLink]="['/userphotography']" class="dropdown-item">Photography</a>
+                                    <a [routerLink]="['/userpandit']" class="dropdown-item">Pandit</a>
+                                    <a [routerLink]="['/userdj']" class="dropdown-item">DJ</a>
+                                    <a [routerLink]="['/userdecorator']" class="dropdown-item">Decorator</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="col-9 " style="margin-top: 40px;">
+            <input class="form-control form-control-dark w-100 " type="text" placeholder="Search" aria-label="Search">
+
+
+            <div class="row row-cols-1 row-cols-md-3 pt-3">
+
+
+                <div class="col-4 mt-5" *ngFor="let dj of djs">
+                    <div class="card shadow-lg p-3">
+                        <div class="mt-2 ml-2">
+                            <b>Musician Name :</b> {{dj.musicianName}}
+                        </div>
+                        <div class="ml-2">
+                            <b>Per Hour Prince :</b> {{dj.perHourPrice}}
+                        </div>
+                        <div class="mb-2 ml-2">
+                            <b>City :</b> {{dj.musicianCity}}
+                        </div>
+                        <div class="btn btn-success" (click)="getmoredetails(dj)">
+                            Get More Details
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

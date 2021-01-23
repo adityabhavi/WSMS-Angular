@@ -1,0 +1,37 @@
+<app-user-navbar></app-user-navbar>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="row justify-content-center">
+                <div class="col-6 mt-5">
+                    <div>
+                        <h4><b> Caterer Name :</b> {{caterer.catererName}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Starting per plate price :</b> {{caterer.catererStartingPrice}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Caterer Address :</b> {{caterer.catererAddress}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Caterer City :</b> {{caterer.catererCity}}</h4>
+                    </div>
+                    <div>
+                        <h4><b>  Caterer Zipcode :</b> {{caterer.catererZipCode}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Contact Number :</b> {{caterer.officeNumber}}</h4>
+                    </div>
+                    <div>
+                        <h4><b> Email Id :</b> {{caterer.catererEmailId}}</h4>
+                    </div>
+
+                    <div class="btn btn-secondary" (click)="addtocart(caterer)">
+                        Add To Cart
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

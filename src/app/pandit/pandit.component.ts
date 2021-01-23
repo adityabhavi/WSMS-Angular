@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClientService } from '../service/httpclient.service';
 import { Pandit, PanditService } from '../service/pandit.service';
 
 @Component({
@@ -9,37 +10,41 @@ import { Pandit, PanditService } from '../service/pandit.service';
 })
 export class PanditComponent implements OnInit {
 
-  pandit!:Pandit;
-  panditName:string;
-  panditAddress: string;
-  zipcode:Number;
-  officeNumber: string;
+  
+  pandit:Pandit=new Pandit();
+  venueName: string;
+  venueType: string;
+  perDayResnt: Number;
+  seatingCapacity : Number;
+  kitchenAvailability:string;
+  samplePhotos:string;
+  venueAddress : string;
+  zipCode : Number;
   emailId:string;
-  startingPrice:Number;
-  profilePhoto:string;
-  experience:Number;
-  languages: string;
+  officeNumber: string;
   vendorId:Number;
+  venueCity:string;
+  
+
 
   constructor(
     private panditService: PanditService,
     private router: Router,
+    private httpCllientService:HttpClientService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  addPanditDetails(){
-    alert(this.panditName);
-    this.panditService.addPandit
-    (new Pandit(this.panditName,this.panditAddress,this.zipcode,this.officeNumber,this.emailId,
-      this.startingPrice,this.profilePhoto,this.experience,this.languages,this.vendorId)).subscribe(res => {
-    //  this.getAllUser();
-       
-      
-    }
-    )
-    this.router.navigate(['login']);
+  addDetails(){
+    this.vendorId=this.httpCllientService.vendorObj.vendorId;
+    this.pandit=new Pandit(0,this.venueName,this.venueAddress,this.zipCode,this.officeNumber,this.emailId,this.perDayResnt,this.seatingCapacity,
+      this.kitchenAvailability,this.vendorId,this.venueCity);
+    this.panditService.addPandit(this.pandit).subscribe(res=>{
+      this.pandit=res;
+    });
+    this.panditService.panditObj=this.pandit;
+    this.router.navigate(['pandithome']);
   }
   
 

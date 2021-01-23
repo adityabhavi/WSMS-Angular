@@ -1,4 +1,4 @@
-<h3>Pandit Details Form</h3>
+<!-- <h3>Pandit Details Form</h3>
 
 <input type="text" [(ngModel)]="panditName" placeholder="panditName"><br>
 <input type="text" [(ngModel)]="panditAddress" placeholder="panditAddress"><br>
@@ -11,4 +11,185 @@
 <input type="text" [(ngModel)]="languages" placeholder="languages"><br>
 <input type="text" [(ngModel)]="vendorId" placeholder="vendorId"><br>
 <button type="submit" (click)="addPanditDetails()">Add Pandit Details</button>
-<br><br>
+<br><br> -->
+
+<!--<h3>Add Venue Details</h3>
+.
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <input type="text" class="form-control" [(ngModel)]="venueName" placeholder="venueName"><br>
+            <input type="text" class="form-control" [(ngModel)]="venueType" placeholder="venueType"><br>
+            <input type="text" class="form-control" [(ngModel)]="perDayResnt" placeholder="perDayResnt"><br>
+            <input type="text" class="form-control" [(ngModel)]="seatingCapacity" placeholder="seatingCapacity"><br>
+            <input type="text" class="form-control" [(ngModel)]="kitchenAvailability" placeholder="kitchenAvailability"><br>
+            <input type="text" class="form-control" [(ngModel)]="samplePhotos" placeholder="samplePhotos"><br>
+            <input type="text" class="form-control" [(ngModel)]="venueAddress" placeholder="venueAddress"><br>
+            <input type="text" class="form-control" [(ngModel)]="zipCode" placeholder="zipCode"><br>
+            <input type="email" class="form-control" [(ngModel)]="emailId" placeholder="emailId"><br>
+            <input type="text" class="form-control" [(ngModel)]="officeNumber" placeholder="officeNumber"><br>
+            <input type="text" class="form-control" [(ngModel)]="vendorId" placeholder="vendorId"><br><br>
+            <button type="submit" (click)="addVenueDetails()" class="btn btn-primary">Add Venue Details</button>
+            <br><br>
+
+        </div>
+    </div>
+</div>
+-->
+<app-vendor-navbar></app-vendor-navbar>
+
+<div class="d-flex justify-content-center ">
+    <h3><b>Venue Details</b></h3>
+</div>
+
+<div class="container-fluid p-5">
+    <div class="row">
+        <div class="col-md-7 mb-5">
+            <div class="d-flex justify-content-center ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3><b> Pandit Details</b></h3>
+                    </div>
+
+                </div>
+            </div>
+            <form class="form" #venueForm="ngForm" novalidate>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="veneuName">Pandit Name</label>
+                        <input type="text" id="veneuName" [(ngModel)]="venueName" class="form-control" pattern="[A-Za-z]+" name="veneuName" [ngModelOptions]="{standalone: true}" #veneuName="ngModel" required>
+                        <span class="text-danger" *ngIf="veneuName.errors && (veneuName.touched || venueForm.submitted)">
+                            <div *ngIf="veneuName.errors.required">
+                                Full Name is required
+                            </div>
+                            <div *ngIf="veneuName.errors.pattern">
+                                Enter Valid Name
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="address"> Pandit Address</label>
+                        <textarea name="address" id="address" [(ngModel)]="venueAddress" cols="30" rows="4" class="form-control" [ngModelOptions]="{standalone: true}" name="address1" #address1="ngModel" required></textarea>
+                        <span class="text-danger" *ngIf="(address1.touched || venueForm.submitted) && address1.errors?.required">
+                            Address is required
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="lname">Zip Code</label>
+                        <input type="text" id="pin" class="form-control" [(ngModel)]="zipCode" pattern="[0-9]+" [ngModelOptions]="{standalone: true}" maxlength="6" minlength="6" name="pincode" #pincode="ngModel" required>
+                        <span class="text-danger" *ngIf="(pincode.touched || venueForm.submitted) && pincode.errors">
+
+                            <div *ngIf="pincode.errors.required">
+                                Pin Code is required
+                            </div>
+                            <div *ngIf="pincode.errors.pattern">
+                                Enter Valid Pincode
+                            </div>
+
+                            <div *ngIf="pincode.errors.minlength">
+                                Pincode Must Be 6 digits
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+
+                    <div class="col-md-12">
+                        <label class="text-black" for="subject">Mobile No</label>
+                        <input type="text" id="mobile-no" [(ngModel)]="officeNumber" class="form-control" pattern="^[6789]\d{9}$" [ngModelOptions]="{standalone: true}" name="mobilenumber1" #mobilenumber1="ngModel" maxlength="10" minlength="10" required>
+                        <span class="text-danger" *ngIf="(mobilenumber1.touched || venueForm.submitted) && mobilenumber1.errors">
+                            <div *ngIf="mobilenumber1.errors.required">
+                                Mobile Number is required
+                            </div>
+                            <div *ngIf="mobilenumber1.errors.pattern">
+                                Enter Valid Mobile Number
+                            </div>
+
+                            <div *ngIf="mobilenumber1.errors.minlength">
+                                Mobile Number must be 10 digit
+                            </div>
+
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+
+                    <div class="col-md-12">
+                        <label class="text-black" for="email">Email</label>
+                        <input type="email" id="email" [(ngModel)]="emailId" class="form-control" name="emailid" [ngModelOptions]="{standalone: true}" #emailid="ngModel" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required>
+                        <span class="text-danger" *ngIf="(emailid.touched || venueForm.submitted) && emailid.errors">
+                            <div *ngIf="emailid.errors.required">
+                                Email is required
+                            </div>
+                            <div *ngIf="emailid.errors.pattern">
+                                Please use this format
+                                abc@email.com
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+
+                    <div class="col-md-12">
+                        <label class="text-black" for="perdayrent">Strating Price</label>
+                        <input type="text" id="perdayrent" [(ngModel)]="perDayResnt" class="form-control" [ngModelOptions]="{standalone: true}" required>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="seats">Experience</label>
+                        <input type="number" id="seats" [(ngModel)]="seatingCapacity" class="form-control" [ngModelOptions]="{standalone: true}" required>
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="kitchen">Languages</label>
+                        <input type="text" id="kitchen" [(ngModel)]="kitchenAvailability" [ngModelOptions]="{standalone: true}" class="form-control" required>
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <label class="text-black" for="lname">City</label>
+                        <input type="text" id="city" [(ngModel)]="venueCity" class="form-control" name="city" [ngModelOptions]="{standalone: true}" pattern="[A-Za-z]+" #city="ngModel" required>
+                        <span class="text-danger" *ngIf="(city.touched || venueForm.submitted) && city.errors">
+                            <div *ngIf="city.errors.required">
+                                City Name is required
+                            </div>
+                            <div *ngIf="city.errors.pattern">
+                                Enter Valid Name
+                            </div>
+                        </span>
+                    </div>
+                </div>
+
+
+
+                <br>
+                <div class="row form-group">
+                    <div class="col-md-12">
+                        <button type="submit" [disabled]="zipCode == null" class="btn btn-warning d-grid gap-2 col-6 mx-auto" style="margin-left: 10px" (click)="addDetails()">Add Details</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-5">
+            <img src="./assets/images/venue.jpeg" alt="Image" style="height: 80%; width: 100%;" class="img-fluid">
+        </div>
+
+    </div>
+</div>

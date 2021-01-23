@@ -22,9 +22,5 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  logout(){
-    sessionStorage.removeItem('name');
-    this.router.navigate(['login']);
-  }
 
 }

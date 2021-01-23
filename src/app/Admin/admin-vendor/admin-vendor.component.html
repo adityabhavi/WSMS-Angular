@@ -1,0 +1,51 @@
+<app-admin-navbar></app-admin-navbar>
+
+<div class="container-fluid pt-3">
+    <div class="row">
+
+
+        <div class="col-md-12" style="margin-top: 70px;">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h1>List of Vendor</h1>
+                    </div>
+
+                </div>
+                <hr />
+
+                <input class="form-control form-control-dark w-100 " type="text" placeholder="Search" aria-label="Search">
+
+
+            </div>
+
+            <br>
+
+            <div class="table-responsive p-5">
+                <table class="table table-stripped table-bordered text-center">
+                    <tr class="thead-dark" style="background-color:rgb(48, 48, 48); color: whitesmoke;">
+                        <th>Vendor Name</th>
+                        <th>Email</th>
+                        <th>Phone No</th>
+                        <th>Category</th>
+                        <th>City</th>
+                        <th>Action</th>
+                    </tr>
+
+                    <tr *ngFor="let vendor of vendors">
+                        <td>{{vendor.vendorFullName}}</td>
+                        <td>{{vendor.vendorEmail}}</td>
+                        <td>{{vendor.vendorMobileNo}}</td>
+                        <td>{{vendor.vendorCategory}}</td>
+                        <td>{{vendor.vendorCity}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger text-black" (click)="deleteVendor(vendor)">Delete</button>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>

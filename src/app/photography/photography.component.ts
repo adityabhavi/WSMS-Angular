@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClientService } from '../service/httpclient.service';
 import { Photography, PhotographyService } from '../service/photography.service';
 
 @Component({
@@ -9,46 +10,41 @@ import { Photography, PhotographyService } from '../service/photography.service'
 })
 export class PhotographyComponent implements OnInit {
 
-  photography : Photography;
-  photographerName!:string;
-  photographerAddress: string;
-  zipcode:Number;
-  officeNumber: string;
+  venueName: string;
+  venueType: string;
+  perDayResnt: Number;
+  seatingCapacity : Number;
+  kitchenAvailability:string;
+  samplePhotos:string;
+  venueAddress : string;
+  zipCode : Number;
   emailId:string;
-  perDayPrice:Number;
-  samplePhoto: string;
+  officeNumber: string;
   vendorId:Number;
+  venueCity:string;
+  photo:Photography=new Photography();
 
 
   constructor(
     private photographyService: PhotographyService,
     private router: Router,
+    private httClientService:HttpClientService,
   ) { }
 
   ngOnInit(): void {
+    
   }
 
-  addPhotographerDetails(){
-    alert(this.photographerName);
-    this.photographyService.addPhotographer
-    (new Photography(this.photographerName,this.photographerAddress,this.zipcode,this.officeNumber,
-      this.emailId,this.perDayPrice,this.samplePhoto,this.vendorId)).subscribe(res => {
-    //  this.getAllUser();
-   /*  
-      this.venueName = "";
-      this.venueType = "";
-      this.perDayResnt = 0;
-      this.seatingCapacity=0;
-      this.kitchenAvalibility = "";
-      this.samplePhotos="";
-      this.VenueAddress="";
-      this.zipCode =0;
-      this.emailId = "";
-      this.officeNumber="";
-      this.VendorId=0;*/
-    }
-    )
-    this.router.navigate(['login']);
+  addDetails(){
+    this.vendorId=this.httClientService.vendorObj.vendorId;
+    
+    this.photo=new Photography(0,this.venueName,this.venueAddress, this.zipCode,
+      this.officeNumber,this.emailId,this.perDayResnt,this.venueCity,this.vendorId);
+
+    this.photographyService.addPhotographer(this.photo).subscribe(res=>{
+      this.photographyService.photoObj=res;
+      this.router.navigate(['photographerhome']);
+    });
   }
 
 }

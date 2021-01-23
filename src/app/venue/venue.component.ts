@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClientService } from '../service/httpclient.service';
 import { Venue, VenueService } from '../service/venue.service';
 
 @Component({
@@ -10,6 +12,7 @@ import { Venue, VenueService } from '../service/venue.service';
 export class VenueComponent implements OnInit {
 
   venue !:Venue;
+  venue1 !:Venue;
   venueName: string;
   venueType: string;
   perDayResnt: Number;
@@ -21,37 +24,33 @@ export class VenueComponent implements OnInit {
   emailId:string;
   officeNumber: string;
   vendorId:Number;
-
+  venueCity:string;
+  
 
   constructor(
     private venueService: VenueService,
+    private httpClientService:HttpClientService, 
     private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.venue=this.venueService.venueObj;
+    console.log(this.venue);
   }
 
   addVenueDetails(){
-    alert(this.venueAddress);
-    this.venueService.addVenue
-    (new Venue(this.venueName, this.venueType, this.perDayResnt,this.seatingCapacity,this.kitchenAvailability,
-      this.samplePhotos,this.venueAddress,this.zipCode,this.emailId,this.officeNumber,this.vendorId)).subscribe(res => {
-    //  this.getAllUser();
-       
-      this.venueName = "";
-      this.venueType = "";
-      this.perDayResnt = 0;
-      this.seatingCapacity=0;
-      this.kitchenAvailability = "";
-      this.samplePhotos="";
-      this.venueAddress="";
-      this.zipCode =0;
-      this.emailId = "";
-      this.officeNumber="";
-      this.vendorId=0;
-    }
-    )
-    this.router.navigate(['login']);
+   // alert(this.httpClientService.vendorObj);
+
+    this.vendorId=this.httpClientService.vendorObj.vendorId;
+    alert(this.vendorId);
+    this.venue = new Venue(0,this.venueName, this.venueType, this.perDayResnt,this.seatingCapacity,this.kitchenAvailability,
+      this.samplePhotos,this.venueAddress,this.zipCode,this.emailId,this.officeNumber,this.vendorId,this.venueCity);
+    this.venueService.addVenue(this.venue).subscribe(res => {
+      this.venue1=res;
+    });
+    this.venueService.venueObj=this.venue1;
+
+    this.router.navigate(['venuehome']);
   }
 
 }

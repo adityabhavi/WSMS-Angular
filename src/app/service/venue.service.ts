@@ -8,6 +8,7 @@ import { User } from './httpclient.service';
 
 export class Venue {
   constructor(
+    public venueId:Number,
     public venueName: string,
     public venueType: string,
     public perDayRent: Number,
@@ -19,7 +20,21 @@ export class Venue {
     public emailId:string,
     public officeNumber: string,
     public vendorId:Number,
+    public venueCity:string,
   ) { }
+}
+
+export class VenuePhoto{
+  constructor(
+    public venuePhotoId:Number,
+    public photoName:string,
+    public photoType:string,
+    public picByte:any[],
+    public venueId:Number, 
+  ){
+
+  }
+
 }
 
 @Injectable({
@@ -27,6 +42,7 @@ export class Venue {
 })
 
 export class VenueService {
+  venueObj: Venue;
 
   constructor(
     private httpClient: HttpClient
@@ -42,8 +58,18 @@ export class VenueService {
   }
 
   getAllVenue(){
-    return this.httpClient.get<Venue[]>("http://localhost:8080/getallvenuelist");
+    return this.httpClient.get<Venue[]>("http://localhost:8080/getAllVenue");
   }
 
+  getVenue(city:string){
+    return this.httpClient.get<Venue[]>("http://localhost:8080/venue?city="+city);
+  }
 
+  getVenueObject(){
+    return this.venueObj;
+  }
+
+  setVenueObject(venueobj){
+    this.venueObj=venueobj;
+  }
 }

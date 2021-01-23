@@ -1,19 +1,218 @@
-<h3>Register Yourself</h3>
-.
-<div class="container-fluid">
-    <div class="row justify-content-between">
-        <div class="col-4">
-            <input type="text" class="form-control" [(ngModel)]="fullName" placeholder="fullname"><br>
-            <input type="password" class="form-control" [(ngModel)]="password" placeholder="password"><br>
-            <input type="text" class="form-control" [(ngModel)]="email" placeholder="email"><br>
-            <input type="text" class="form-control" [(ngModel)]="mobilenumber" placeholder="mobilenumber"><br>
-            <input type="text " class="form-control" [(ngModel)]="gender" placeholder="gender"><br>
-            <input type="text" class="form-control" [(ngModel)]="role" placeholder="role"><br>
-            <input type="text" class="form-control" [(ngModel)]="category" placeholder="category"><br>
-            <input type="text" class="form-control" [(ngModel)]="address" placeholder="address"><br>
-            <input type="text" class="form-control" [(ngModel)]="zipcode" placeholder="zipcode"><br>
-            <button type="submit" class="btn btn-primary" (click)="add()">Register</button>
-            <br><br>
+<app-navbar>
+
+
+</app-navbar>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+
+
+<div class="site-section bg-light">
+    <div class="d-flex justify-content-center ">
+        <div class="row">
+            <div class="col-md-12">
+                <h3><b>Register Here..</b></h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid p-5">
+        <div class="row">
+            <div class="col-md-7 mb-5">
+                <form class="form" #registerForm="ngForm" novalidate>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="fullname">Full Name</label>
+                            <input type="text" id="fullname" [(ngModel)]="fname" class="form-control" pattern="[A-Za-z]+" name="fullname" #fullname="ngModel" required>
+                            <span class="text-danger" *ngIf="fullname.errors && (fullname.touched || registerForm.submitted)">
+                                
+                                <div *ngIf="fullname.errors.required">
+                                Full Name is required
+                                </div>
+                                <div *ngIf="fullname.errors.pattern">
+                                Enter Valid Name 
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Email</label>
+                            <input type="email" id="email" [(ngModel)]="email" class="form-control" name="emailid" #emailid="ngModel" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" required>
+                            <span class="text-danger" *ngIf="(emailid.touched || registerForm.submitted) && emailid.errors">
+                                <div *ngIf="emailid.errors.required">
+                                    Email is required
+                                </div> 
+                                <div *ngIf="emailid.errors.pattern">
+                                    Please use this format
+                                    abc@email.com
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="subject">Mobile No</label>
+                            <input type="text" id="mobile-no" [(ngModel)]="mobilenumber" class="form-control" pattern="^[6789]\d{9}$" name="mobilenumber1" #mobilenumber1="ngModel" maxlength="10" minlength="10" required>
+                            <span class="text-danger" *ngIf="(mobilenumber1.touched || registerForm.submitted) && mobilenumber1.errors">
+                                <div *ngIf="mobilenumber1.errors.required">
+                                    Mobile Number is required
+                                </div> 
+                                <div *ngIf="mobilenumber1.errors.pattern">
+                                    Enter Valid Mobile Number
+                                </div>
+    
+                                <div *ngIf="mobilenumber1.errors.minlength">
+                                    Mobile Number must be 10 digit
+                                </div>
+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <label class="text-black" for="subject">Gender</label>
+                            <div class="p-t-7 ">
+                                <input type="radio" id="male" [(ngModel)]="gender" name="gender" value="male">
+                                <label for="male">Male</label> &nbsp;
+                                <input type="radio" id="female" [(ngModel)]="gender" name="gender" value="female" checked="checked">
+                                <label for="female">Female</label> &nbsp;
+                                <input type="radio" id="other" [(ngModel)]="gender" name="gender" value="other">
+                                <label for="other">Other</label>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Password</label>
+                            <input type="password" id="password" [(ngModel)]="password" minlength="8" maxlength="15" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$" name="pass" #pass="ngModel" class="form-control" required>
+                            <span class="text-danger" *ngIf="(pass.touched || registerForm.submitted) && pass.errors">
+                                <div *ngIf="pass.errors.required">
+                                   Password is required
+                                </div> 
+                                <div *ngIf="pass.errors.pattern">
+                                    Password should have minimum 8 characters, at least 1 uppercase letter, 1
+                                    lowercase
+                                    letter and 1 number
+                                </div>
+    
+                                <div *ngIf="pass.errors.minlength">
+                                    Password must be 8 character
+                                </div>
+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+
+                        <div class="col-md-12">
+                            <label class="text-black" for="email">Confirm Password</label>
+                            <input type="password" id="password" [(ngModel)]="cpassword" minlength="8" maxlength="15" pattern="{{password}}" name="cpass" #cpass="ngModel" class="form-control" required>
+                            <span class="text-danger" *ngIf="(cpass.touched || registerForm.submitted) && cpass.errors">
+                                <div *ngIf="cpass.errors.required">
+                                   Password is required
+                                </div> 
+                                <div *ngIf="cpass.errors.pattern">
+                                    Password and Confirm Password Does Not Match
+                                </div>
+    
+                                <div *ngIf="pass.errors.minlength">
+                                    Password must be 8 character
+                                </div>
+
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="address">Address</label>
+                            <textarea name="address" id="address" [(ngModel)]="address" cols="30" rows="4" class="form-control" name="address1" #address1="ngModel" required></textarea>
+                            <span class="text-danger" *ngIf="(address1.touched || registerForm.submitted) && address1.errors?.required">
+                                Address is required
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="lname">City</label>
+                            <input type="text" id="city" [(ngModel)]="userCity" class="form-control" name="city" pattern="[A-Za-z]+" #city="ngModel" required>
+                            <span class="text-danger" *ngIf="(city.touched || registerForm.submitted) && city.errors">
+                                <div *ngIf="city.errors.required">
+                                    City Name is required
+                                </div> 
+                                <div *ngIf="city.errors.pattern">
+                                    Enter Valid Name 
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <label class="text-black" for="lname">Pin Code</label>
+                            <input type="text" id="pin" class="form-control" [(ngModel)]="zipcode" pattern="[0-9]+" maxlength="6" minlength="6" name="pincode" #pincode="ngModel" required>
+                            <span class="text-danger" *ngIf="(pincode.touched || registerForm.submitted) && pincode.errors">
+                               
+                                <div *ngIf="pincode.errors.required">
+                                    Pin Code is required
+                                </div> 
+                                <div *ngIf="pincode.errors.pattern">
+                                    Enter Valid Pincode
+                                </div>
+    
+                                <div *ngIf="pincode.errors.minlength">
+                                    Pincode Must Be 6 digits
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-5">
+                            <label class="text-black">Role</label>
+                            <select class="form-control" id="Role" #mySelect (change)="onSelect(mySelect.value)">
+                                <option selected>Choose Role</option>
+                                <option value="User">User</option>
+                                <option value="Vendor">Vendor</option>
+                            </select>
+
+                        </div>
+                        <div class="col-5">
+                            <div *ngIf=isVendor>
+                                <label>Select Category</label>
+                                <select class="form-control" id="Category" #myValue (change)="onSelectCetegory(myValue.value)">
+                                    <option value="venue">Venue</option>
+                                    <option value="decorator">Decorator</option>
+                                    <option value="pandit">Pandit</option>
+                                    <option value="dj">Music</option>
+                                    <option value="caterer">Caterer</option>
+                                    <option value="photography">Photography</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <button type="submit" [disabled]="zipcode == null " class="btn btn-warning d-grid gap-2 col-6 mx-auto" style="margin-left: 10px" (click)="add()">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-5">
+                <img src="./assets/images/pic_1.jpg" alt="Image" class="img-fluid">
+            </div>
 
         </div>
     </div>

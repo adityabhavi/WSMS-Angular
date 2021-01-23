@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WedsMeGood &mdash; Colorlib Website Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-1">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <div class="row ">
+        <div class="col-12">
+            <nav class="navbar navbar-expand-md navbar-dark justify-content-between bg-dark">
+                <div>
+                    <h3 style="color: cornsilk; text-shadow: 1px 1px 2px black;margin-top: 10px; ">WedMeGood</h3>
+                </div>
+
+                <div>
+                    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+                    <div class="collapse navbar-collapse ml-auto mr-1 flex-grow-0" id="navbarTogglerDemo01" [ngClass]="{ 'show': navbarOpen }">
+                        <ul class="navbar-nav text-right">
+                            <li class="nav-item active">
+                                <a class="nav-link mr-3" routerLink="/vendorhome" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Services</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link mr-3" routerLink="/vendorhomecustomers" style="font-size:3vh;color:white;text-shadow: 1px 1px 2px black;">Customer</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link mr-3" routerLink="/vendorhomeprofile" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Profile</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link mr-3" routerLink="/signin" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Contact Us</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link mr-3" routerLink="/logout" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;"><button type="button" class="btn btn-danger btn-sm">Logout</button></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
