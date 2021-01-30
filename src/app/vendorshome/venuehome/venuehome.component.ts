@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClientService, Vendor } from 'src/app/service/httpclient.service';
+import { OrderService, VendorOrders } from 'src/app/service/order.service';
 import { Venue, VenuePhoto, VenueService } from 'src/app/service/venue.service';
 
 @Component({
@@ -24,12 +25,19 @@ export class VenuehomeComponent implements OnInit {
   venue!:Venue;
   vendor:Vendor=new Vendor();
   url: string[] = [];
+  isOrders:boolean=false;
+  serviceId:Number;
+  status:boolean;
+  vId:Number;
+  orderstatus:VendorOrders[];
+
 
   constructor(
     private httpClient: HttpClient,
     private venueService: VenueService,
     private router: Router,
     private httpClientService: HttpClientService,
+    private orderService: OrderService,
     ) { }
 
   ngOnInit(): void {
@@ -38,9 +46,37 @@ export class VenuehomeComponent implements OnInit {
     } else {
       this.vendor = this.httpClientService.vendorObj;
       console.log(this.vendor);
-      this.router.navigate(['venuehoome']);
+      this.router.navigate(['venuehome']);
     }
     this.venue=this.venueService.venueObj;
+    // this.orderService.getServiceId(this.vendor.vendorId,"venue").subscribe(res =>{
+    //   this.serviceId=res;
+      
+    // });
+    this.confirmorders();
+
+  }
+
+  confirmorders(){
+    this.isOrders=false;
+    this.orderService.getOrderForVendor(true,this.vendor.vendorId).subscribe(res=>{
+      console.log(res);
+      this.orderstatus=res;
+    });
+  }
+
+  pendingorders(){
+    this.isOrders=true;
+    this.orderService.getOrderForVendor(false,this.vendor.vendorId).subscribe(res=>{
+      this.orderstatus=res;
+      console.log(res);
+    });
+  }
+
+  acceptrequest(orderId:Number){
+    this.orderService.confirmOrder(orderId).subscribe(res=>{
+      console.log(res);
+    });
   }
 
   

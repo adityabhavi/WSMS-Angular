@@ -49,6 +49,10 @@ import { AdminCustomerComponent } from './Admin/admin-customer/admin-customer.co
 import { AdminVendorComponent } from './Admin/admin-vendor/admin-vendor.component';
 import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpassworddComponent } from './resetpasswordd/resetpasswordd.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +126,14 @@ import { AdminNavbarComponent } from './admin-navbar/admin-navbar.component';
     AdminLoginComponent,
    
     AdminNavbarComponent,
+   
+    ForgotpasswordComponent,
+   
+    ResetpassworddComponent,
+   
+    FooterComponent,
+   
+    ContactUsComponent,
    
   
   ],

@@ -12,7 +12,7 @@ export class UsercartComponent implements OnInit {
 
   orders: Order[];
   user: User;
-  order:Order
+  order:Order;
   orderDetail:OrderDetails[];
   vendorName:string;
   serviceName1:string[];
@@ -27,7 +27,7 @@ export class UsercartComponent implements OnInit {
     this.user=this.httpClientService.userObj;
     this.orderService.getOrder(this.user.userId).subscribe(res => {  
     this.orderDetail=res;
-   
+    console.log(res);
     console.log(this.orderDetail);
     })
   }

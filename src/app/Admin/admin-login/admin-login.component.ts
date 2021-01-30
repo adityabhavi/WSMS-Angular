@@ -22,6 +22,7 @@ export class AdminLoginComponent implements OnInit {
 
   adminlogin(adminemail,adminpassword){
     this.adminService.adminLogin(new Admin(0,null,adminemail,adminpassword,null)).subscribe(res=>{
+      console.log(res);
       if (res != null) {
         this.adminService.adminObj=res;
         sessionStorage.setItem('admin',this.adminService.adminObj.adminFullName);

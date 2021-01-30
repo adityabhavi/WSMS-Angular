@@ -62,6 +62,7 @@ export class RegistrationComponent implements OnInit {
 
   add() {  
     if(this.isRole==1){
+      alert("User")
     this.user = new User(0,this.fname, this.email, this.password,this.mobilenumber,this.gender,
       this.address,this.userCity,this.zipcode);
     this.httpClientService.createUser(this.user).subscribe(res => {  

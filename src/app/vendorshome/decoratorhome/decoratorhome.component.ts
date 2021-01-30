@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Decorator, DecoratorService } from 'src/app/service/decorator.service';
-import { HttpClientService } from 'src/app/service/httpclient.service';
+import { HttpClientService, Vendor } from 'src/app/service/httpclient.service';
+import { OrderService, VendorOrders } from 'src/app/service/order.service';
+import { VenueService } from 'src/app/service/venue.service';
 
 @Component({
   selector: 'app-decoratorhome',
@@ -22,26 +25,54 @@ export class DecoratorhomeComponent implements OnInit {
   result:any[];
   decorator:Decorator=new Decorator();
   dId:string;
+  isOrders:boolean=false;
+  vendor:Vendor=new Vendor();
+  orderstatus:VendorOrders[];
   
   constructor(
-    private httpClientService: HttpClientService,
-    private decoratorService: DecoratorService,
     private httpClient: HttpClient,
+    private venueService: VenueService,
+    private router: Router,
+    private httpClientService: HttpClientService,
+    private orderService: OrderService,
+    private decoratorService: DecoratorService,
   ) { }
 
   ngOnInit( ): void {
-    // this.decorator=this.decoratorService.decoratorObj;
-    // this.httpClient.get('http://localhost:8080/getalldecoratorphotos?catererId='+124)
-    // .subscribe(res => {
-    //     this.retrievedImage = res;
-    //     for( let result of this.retrievedImage ){
-    //       this.base64Data = result.picByte;
-    //       this.url.push('data:image/jpeg;base64,' + this.base64Data);
-    //     }
-    //     console.log(res);
-    //     }
-    // );
+    if (!sessionStorage.getItem('vendor')) {
+      this.router.navigate(['']);
+    } else {
+      this.vendor = this.httpClientService.vendorObj;
+      console.log(this.vendor);
+      this.router.navigate(['decoratorhome']);
+    }
+   
+    this.confirmorders();
   }
+
+
+  confirmorders(){
+    this.isOrders=false;
+    this.orderService.getOrderForVendor(true,this.vendor.vendorId).subscribe(res=>{
+      console.log(res);
+      this.orderstatus=res;
+    });
+  }
+
+  pendingorders(){
+    this.isOrders=true;
+    this.orderService.getOrderForVendor(false,this.vendor.vendorId).subscribe(res=>{
+      this.orderstatus=res;
+      console.log(res);
+    });
+  }
+
+  acceptrequest(orderId:Number){
+    this.orderService.confirmOrder(orderId).subscribe(res=>{
+      console.log(res);
+    });
+  }
+
   public onFileChanged(event) {
     this.selectedFiles = event.target.files;
   }

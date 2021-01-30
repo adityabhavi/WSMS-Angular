@@ -30,6 +30,7 @@ export class CatererDetailsComponent implements OnInit {
   addtocart(caterer){
     this.order=new Order(0,this.user.userId,this.caterer.vendorId,this.caterer.catererId,this.status);
     this.orderService.addorder(this.order).subscribe(result => {});
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 

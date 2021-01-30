@@ -30,6 +30,7 @@ export class PhotoghrapherDetailsComponent implements OnInit {
   addtocart(photo){
     this.order=new Order(0,this.user.userId,this.photo.vendorId,this.photo.photographerId,this.status);
     this.orderService.addorder(this.order).subscribe(result => {});
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 

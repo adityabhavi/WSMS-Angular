@@ -6,12 +6,30 @@
             <h5>Admin Login</h5>
             <form class="form-signin">
                 <label class="d-flex justify-content-start">EmailId</label>
-                <input type="email" id="inputEmail" [(ngModel)]="adminemail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="inputEmail" [(ngModel)]="adminemail"[ngModelOptions]="{standalone: true}" class="form-control" placeholder="Email address" required autofocus>
                 <label class="d-flex justify-content-start">Password</label>
-                <input type="password" id="inputPassword" class="form-control" [(ngModel)]="adminpassword" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" [(ngModel)]="adminpassword" [ngModelOptions]="{standalone: true}" placeholder="Password" required>
                 <button class="btn mt-3 btn-dark btn-signin" (click)="adminlogin(adminemail,adminpassword)" type="submit">Login</button>
             </form>
 
         </div>
     </div>
 </div>
+
+<footer class="footer bg-dark text-light fixed-bottom" style=" bottom: 0;">
+    <div class="container">
+
+        <div class="row mt-3 text-center">
+            <div class="col-md-12">
+
+                <p>
+
+                    Copyright &copy; 2021 All rights reserved
+
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</footer>

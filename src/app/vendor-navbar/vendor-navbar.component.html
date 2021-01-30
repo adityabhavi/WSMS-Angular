@@ -28,7 +28,7 @@
         <div class="col-12">
             <nav class="navbar navbar-expand-md navbar-dark justify-content-between bg-dark">
                 <div>
-                    <h3 style="color: cornsilk; text-shadow: 1px 1px 2px black;margin-top: 10px; ">WedMeGood</h3>
+                    <h3 style="color: cornsilk; text-shadow: 1px 1px 2px black;margin-top: 10px; ">WSMS</h3>
                 </div>
 
                 <div>
@@ -38,20 +38,10 @@
 
                     <div class="collapse navbar-collapse ml-auto mr-1 flex-grow-0" id="navbarTogglerDemo01" [ngClass]="{ 'show': navbarOpen }">
                         <ul class="navbar-nav text-right">
+                           
+                            
                             <li class="nav-item active">
-                                <a class="nav-link mr-3" routerLink="/vendorhome" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Services</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link mr-3" routerLink="/vendorhomecustomers" style="font-size:3vh;color:white;text-shadow: 1px 1px 2px black;">Customer</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link mr-3" routerLink="/vendorhomeprofile" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Profile</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link mr-3" routerLink="/signin" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;">Contact Us</a>
-                            </li>
-                            <li class="nav-item active">
-                                <a class="nav-link mr-3" routerLink="/logout" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;"><button type="button" class="btn btn-danger btn-sm">Logout</button></a>
+                                <a class="nav-link mr-3" style="font-size:3vh;color:white; text-shadow: 1px 1px 2px black;"><button type="button" class="btn btn-danger btn-sm" (click)="logout()">Logout</button></a>
                             </li>
                         </ul>
                     </div>

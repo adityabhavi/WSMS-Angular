@@ -25,7 +25,7 @@ export class CatererService {
   constructor(
     private httpClient: HttpClient
   ) { }
-
+ 
   getAllCateres(){
     return this.httpClient.get<Caterer[]>("http://localhost:8080/getallcarterer");  
   }
@@ -34,4 +34,7 @@ export class CatererService {
     return this.httpClient.post<Caterer>("http://localhost:8080/addcaterer",caterer);  
   }
 
+
+
+  
 }

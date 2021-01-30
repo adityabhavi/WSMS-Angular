@@ -30,6 +30,7 @@ export class DjDetailsComponent implements OnInit {
   addtocart(dj){
     this.order=new Order(0,this.user.userId,this.dj.vendorId,this.dj.musicianId,this.status);
     this.orderService.addorder(this.order).subscribe(result => {});
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 

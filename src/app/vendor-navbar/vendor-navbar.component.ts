@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-navbar',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class VendorNavbarComponent implements OnInit {
   navbarOpen: boolean;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -16,6 +19,11 @@ export class VendorNavbarComponent implements OnInit {
   
 toggleNavbar() {
   this.navbarOpen = !this.navbarOpen;
+}
+
+logout(){
+  sessionStorage.removeItem('vendor');
+    this.router.navigate(['']);
 }
 
 }

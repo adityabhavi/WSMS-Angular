@@ -30,6 +30,7 @@ export class DecoratorDetailsComponent implements OnInit {
   addtocart(decorator){
     this.order=new Order(0,this.user.userId,this.decorator.vendorId,this.decorator.decoratorId,this.status);
     this.orderService.addorder(this.order).subscribe(result => {});
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-navbar',
@@ -8,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 export class AdminNavbarComponent implements OnInit {
   navbarOpen: boolean;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
   
+logout(){
+    sessionStorage.removeItem('admin');
+    this.router.navigate(['']);
+  }
+
 toggleNavbar() {
   this.navbarOpen = !this.navbarOpen;
 }
 }
+

@@ -22,6 +22,16 @@ export class OrderDetails{
   }
 }
 
+export class VendorOrders{
+  constructor(
+    public order?:Order,
+    public userName?:string,
+    public userMobileNo?:string,
+  ){
+
+  }
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +50,18 @@ export class OrderService {
   getOrder(userId:Number){
     return this.httpClient.get<OrderDetails[]>("http://localhost:8080/getorderstatus?userId="+userId);
   }
+
+  // getServiceId(vendorId:Number,category:string){
+  //   return this.httpClient.get<Number>("http://localhost:8080/getserviceid?vendorId="+vendorId+"&&catergory="+category);
+  // }
+
+  getOrderForVendor(status:boolean,vId:Number){
+    return this.httpClient.get<VendorOrders[]>("http://localhost:8080/getorderforvendor?vendorId="+vId+"&&value="+status)
+  }
+
+  confirmOrder(orderId:Number){
+    return this.httpClient.get<string>("http://localhost:8080/confirmorder?orderId="+orderId);
+  }
+ 
 }
 

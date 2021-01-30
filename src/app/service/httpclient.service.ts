@@ -80,7 +80,7 @@ export class HttpClientService {
   }
 
   deleteVendor(vendorId: Number){
-    return this.httpClient.delete("http://localhost:8080/deleteVendor?vendorId="+vendorId);
+    return this.httpClient.get<string>("http://localhost:8080/deletevendor?vendorId="+vendorId);
   }
 
   getAllUSers(){
@@ -92,11 +92,27 @@ export class HttpClientService {
   }
 
   deleteUser(userId:Number){
-    return this.httpClient.delete("https://localhost:8080/deletuser?userId="+userId);
+    return this.httpClient.get<string>("https://localhost:8080/deleteuser?userId="+userId);
   }
 
   updateUser(user:User){
     return this.httpClient.post<User>("http://localhost:8080/updateuser", user);
+  }
+
+  userForgotPassword(user:User){
+    return this.httpClient.post<User>("http://localhost:8080/forgotpassworduser",user);
+  }
+
+  userResetPassword(user:User){
+    return this.httpClient.post<User>("http://localhost:8080/resetpassworduser",user);
+  }
+
+  vendorForgotPassword(vendor:Vendor){
+    return this.httpClient.post<User>("http://localhost:8080/forgotpasswordvendor",vendor);
+  }
+
+  vendorResetPassword(vendor:Vendor){
+    return this.httpClient.post<User>("http://localhost:8080/resetpasswordvendor",vendor);
   }
   
 }

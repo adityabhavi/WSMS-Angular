@@ -31,6 +31,7 @@ export class PanditDetailsComponent implements OnInit {
   addtocart(pandit){
     this.order=new Order(0,this.user.userId,this.pandit.vendorId,this.pandit.panditId,this.status);
     this.orderService.addorder(this.order).subscribe(result => {});
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 }

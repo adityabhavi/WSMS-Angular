@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { Caterer, CatererService } from 'src/app/service/caterer.service';
 import { HttpClientService, Vendor } from 'src/app/service/httpclient.service';
+import { OrderService, VendorOrders } from 'src/app/service/order.service';
 
 @Component({
   selector: 'app-catererhomerhome',
@@ -25,11 +26,15 @@ export class CatererhomerhomeComponent implements OnInit {
   caterer:Caterer=new Caterer();
   cId:string;
   vendor:Vendor=new Vendor();
+  isOrders:boolean=false;
+  
+  orderstatus:VendorOrders[];
 
   constructor(
     private httpClient: HttpClient,
     private caterService:CatererService,
     private router: Router,
+    private orderService: OrderService,
     private httpClientService: HttpClientService,
   ) { }
 
@@ -41,7 +46,8 @@ export class CatererhomerhomeComponent implements OnInit {
       console.log(this.vendor);
       this.router.navigate(['catererhome']);
     }
-
+    
+    this.confirmorders();
     // this.caterer=this.caterService.catererObje;
     // this.httpClient.get('http://localhost:8080/getallvenuephotos?catererId='+this.caterer.catererId)
     // .subscribe(res => {
@@ -54,6 +60,30 @@ export class CatererhomerhomeComponent implements OnInit {
     //     }
     // );
   }
+
+  confirmorders(){
+    this.isOrders=false;
+    this.orderService.getOrderForVendor(true,this.vendor.vendorId).subscribe(res=>{
+      console.log(res);
+      this.orderstatus=res;
+    });
+  }
+
+  pendingorders(){
+    this.isOrders=true;
+    this.orderService.getOrderForVendor(false,this.vendor.vendorId).subscribe(res=>{
+      this.orderstatus=res;
+      console.log(res);
+    });
+  }
+
+  acceptrequest(orderId:Number){
+    this.orderService.confirmOrder(orderId).subscribe(res=>{
+      console.log(res);
+    });
+  }
+
+
 
   public onFileChanged(event) {
     this.selectedFiles = event.target.files;

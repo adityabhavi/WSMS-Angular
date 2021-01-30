@@ -33,6 +33,7 @@ export class VenueDetailsComponent implements OnInit {
     this.orderService.addorder(this.order).subscribe(result => {
      
     });
+    alert("Order Added To Cart");
     this.router.navigate(['usercart']);
   }
 }

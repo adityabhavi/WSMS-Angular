@@ -6,8 +6,10 @@ import { AdminLoginComponent } from './Admin/admin-login/admin-login.component';
 
 import { AdminVendorComponent } from './Admin/admin-vendor/admin-vendor.component';
 import { CatererComponent } from './caterer/caterer.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DecoratorComponent } from './decorator/decorator.component';
 import { DjComponent } from './dj/dj.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { HomeComponent } from './home/home.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './login/login.component';
@@ -16,6 +18,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { PanditComponent } from './pandit/pandit.component';
 import { PhotographyComponent } from './photography/photography.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { ResetpassworddComponent } from './resetpasswordd/resetpasswordd.component';
 import { User } from './service/httpclient.service';
 import { Venue } from './service/venue.service';
 import { UserCaterersComponent } from './user-caterers/user-caterers.component';
@@ -49,10 +52,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path:'venue', component: VenueComponent },
   {path:'pandit', component: PanditComponent },
-  {path:'photography',component:PhotographyComponent},
+  {path:'photographer',component:PhotographyComponent},
   {path:'navbar',component:NavbarComponent},
   {path:'decorator',component:DecoratorComponent},
-  {path:'dj',component:DjComponent},
+  {path:'musician',component:DjComponent},
   {path:'caterer',component:CatererComponent},
   {path:'venuehome',component:VenuehomeComponent},
   {path:'vendornavbar',component:VendorNavbarComponent},
@@ -61,7 +64,9 @@ const routes: Routes = [
   {path:'pandithome',component:PandithomeComponent},
   {path:'photographerhome',component:PhotographerhomeComponent},
   {path:'catererhome',component:DecoratorhomeComponent},
-
+  {path:'forgotpassword/:Id',component:ForgotpasswordComponent},
+  {path:'resetpasswordd/:Id',component:ResetpassworddComponent},
+ {path:'contactus',component:ContactUsComponent},
 
   {path:'userhome',component:UserHomeComponent},
   {path:'uservenue',component:UserVenueComponent},
